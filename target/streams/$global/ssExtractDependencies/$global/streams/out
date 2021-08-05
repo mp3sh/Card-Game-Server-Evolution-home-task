@@ -1,0 +1,1 @@
+[error] sbt.librarymanagement.ResolveException: unresolved dependency: com.typesafe.akka#akka-actor-testkit-typed;2.4.17: not found
