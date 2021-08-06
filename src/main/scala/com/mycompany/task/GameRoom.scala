@@ -21,7 +21,8 @@ class GameRoom(game: String) extends Actor {
   import context.dispatcher
 
   implicit val timeout = Timeout(5 minutes)
-  val playGame = new Game(game)
+  implicit val gameName = game
+  val playGame = new Game
 
   def receive = {
     case user: ActorRef =>
@@ -69,6 +70,6 @@ class GameRoom(game: String) extends Actor {
 
       update_players.foreach(x => x.link ! s"Balance update: ${x.balance}")
 
-      self ! Start(playGame.newGame(game, update_players))
+      self ! Start(playGame.newGame(update_players))
   }
 }
