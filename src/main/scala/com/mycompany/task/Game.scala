@@ -14,7 +14,7 @@ object Game {
   case class Players(players: Seq[Player] = Seq.empty)
 }
 
-class Game(game: String, players: Seq[Player] = Seq.empty) {
+class Game(players: Seq[Player] = Seq.empty)(implicit game: String) {
   import Game._
 
   var online = Players(players)
@@ -54,8 +54,8 @@ class Game(game: String, players: Seq[Player] = Seq.empty) {
     }
   }
 
-  def newGame(game: String, players: Seq[Player] = Seq.empty) ={
-    new Game(game, players)
+  def newGame(players: Seq[Player] = Seq.empty) ={
+    new Game(players)
   }
 
 }
