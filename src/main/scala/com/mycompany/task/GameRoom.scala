@@ -44,7 +44,6 @@ class GameRoom(game: String) extends Actor {
       Future.sequence(request).pipeTo(self)
 
     case players: Seq[Player] =>
-
       val reward = game match {
         case "single-card-game" => (1, 3, 10)
         case "double-card-game" => (2, 5, 20)
